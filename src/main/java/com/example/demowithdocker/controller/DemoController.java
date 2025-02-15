@@ -40,4 +40,10 @@ public class DemoController {
     public Demo getDemo(@PathVariable Long id) {
         return demoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Demo are not found for id = " + id));
     }
+
+    @DeleteMapping("{id}")
+    public String deleteDemo(@PathVariable Long id) {
+        demoRepository.deleteById(id);
+        return "Demo is deleted successfully";
+    }
 }
